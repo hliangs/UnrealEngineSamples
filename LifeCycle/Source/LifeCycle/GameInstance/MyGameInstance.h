@@ -16,7 +16,6 @@ class LIFECYCLE_API UMyGameInstance : public UGameInstance
 	GENERATED_BODY()
 public:
 	UMyGameInstance();
-	~UMyGameInstance();
 
 	UFUNCTION(BlueprintCallable)
 	bool RequestOpenLevel(FName levelName);

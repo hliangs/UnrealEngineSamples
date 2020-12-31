@@ -21,7 +21,6 @@ AMyActor::AMyActor()
 	{
 		UE_LOG(MyLog, Warning, TEXT("Load m_Texture2D Faild"));
 	}
-
 	
 	static ConstructorHelpers::FClassFinder<AActor> FinderBPClass(TEXT("Blueprint'/Game/BP_loadActor.BP_loadActor_C'"));
 	if(FinderBPClass.Succeeded())

@@ -10,13 +10,6 @@ UMyGameInstance::UMyGameInstance()
 }
 
 
-UMyGameInstance::~UMyGameInstance()
-{
-	UE_LOG(LifeCycle, Warning, TEXT(__FUNCTION__));
-}
-
-
-
 bool UMyGameInstance::RequestOpenLevel(FName levelName)
 {
 	UGameplayStatics::OpenLevel(GetWorld(), levelName);

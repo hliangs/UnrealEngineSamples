@@ -8,7 +8,22 @@ AMyGameMode::AMyGameMode()
 	UE_LOG(LifeCycle, Warning, TEXT(__FUNCTION__));
 }
 
-AMyGameMode::~AMyGameMode()
+void AMyGameMode::BeginDestroy()
 {
-	UE_LOG(LifeCycle, Warning, TEXT(__FUNCTION__));
+	Super::BeginDestroy();
+}
+
+void AMyGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
+void AMyGameMode::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+}
+
+void AMyGameMode::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
 }
