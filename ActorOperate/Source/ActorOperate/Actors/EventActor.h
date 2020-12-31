@@ -4,16 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "MyActor.generated.h"
+#include "EventActor.generated.h"
 
 UCLASS()
-class ACTOROPERATE_API AMyActor : public AActor
+class ACTOROPERATE_API AEventActor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AMyActor();
+	AEventActor();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -22,7 +23,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	UPROPERTY(VisibleAnywhere, Category = "Mesh")
-	UStaticMesh* mesh;
-
+	UFUNCTION()
+	void IKeyEvent();
 };
+
+
