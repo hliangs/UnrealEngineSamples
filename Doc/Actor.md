@@ -4,7 +4,7 @@
 
 ## 项目目录
 
-[ActorOperate](..\ActorOperate)
+[ActorOperate](https://github.com/hliangs/UnrealEngineSamples/tree/master/ActorOperate)
 
 ## Actor基本操作
 
@@ -14,6 +14,6 @@
 
   
 
-![CreateActor](..\Pic\CreateActor.png)
+![CreateActor](https://github.com/hliangs/UnrealEngineSamples/blob/master/Pic/CreateActor.png)
 
 要注意的是，Actor的派生类类名以A开头。
