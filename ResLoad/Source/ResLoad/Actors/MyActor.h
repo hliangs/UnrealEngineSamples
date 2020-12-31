@@ -17,7 +17,7 @@ public:
 	AMyActor();
 
 	
-	UPROPERTY(EditAnywhere, Category = "Texture")
+	UPROPERTY(VisibleAnywhere, Category = "Texture")
 	UTexture2D* m_Texture2D;
 
 	UPROPERTY(VisibleAnywhere, Category = "LoadActor")
@@ -31,9 +31,9 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	
 	UFUNCTION()
 	void UKeyEvent();
-	
-	void LoadRes();
 
 };

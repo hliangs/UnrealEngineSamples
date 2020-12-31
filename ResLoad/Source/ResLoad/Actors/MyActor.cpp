@@ -7,11 +7,14 @@
 #include "Engine/Texture2D.h"
 #include "../ResLoad.h"
 #include "Kismet/GameplayStatics.h"
+#include "Components/BoxComponent.h"
 // Sets default values
 AMyActor::AMyActor()
 {
 
 	PrimaryActorTick.bCanEverTick = true;
+	UBoxComponent* Box = CreateDefaultSubobject<UBoxComponent>(TEXT("UBoxComponent"));
+	Box->SetupAttachment(RootComponent);
 	static ConstructorHelpers::FObjectFinder<UTexture2D> FinderObject(TEXT("Texture2D'/Game/picture.picture'"));
 	if(FinderObject.Succeeded())
 	{
@@ -21,6 +24,19 @@ AMyActor::AMyActor()
 	{
 		UE_LOG(MyLog, Warning, TEXT("Load m_Texture2D Faild"));
 	}
+
+	static ConstructorHelpers::FObjectFinder<UTexture2D> FinderObjectX(TEXT("/Game/picture.picture"));
+	if (FinderObjectX.Succeeded())
+	{
+		m_Texture2D = FinderObject.Object;
+		UE_LOG(MyLog, Warning, TEXT("Load m_Texture2D Success"));
+	}
+	else
+	{
+		UE_LOG(MyLog, Warning, TEXT("Load m_Texture2D Faild"));
+	}
+
+	
 	
 	static ConstructorHelpers::FClassFinder<AActor> FinderBPClass(TEXT("Blueprint'/Game/BP_loadActor.BP_loadActor_C'"));
 	if(FinderBPClass.Succeeded())
@@ -42,6 +58,8 @@ AMyActor::AMyActor()
 void AMyActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	//添加一个按键事件(U键)
 	APlayerController* Controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	UInputComponent* InputComp = NewObject<UInputComponent>();
 	InputComp->BindKey(EKeys::U, IE_Pressed, this, &AMyActor::UKeyEvent);
@@ -56,6 +74,7 @@ void AMyActor::Tick(float DeltaTime)
 
 }
 
+//按键事件响应
 void AMyActor::UKeyEvent()
 {
 	UClass* AClass = LoadClass<ALoadActor>(this, TEXT("Blueprint'/Game/BP_loadActor.BP_loadActor_C'"));
@@ -78,9 +97,4 @@ void AMyActor::UKeyEvent()
 	
 }
 
-void AMyActor::LoadRes()
-{
-
-	
-}
 
