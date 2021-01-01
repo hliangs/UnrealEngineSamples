@@ -17,16 +17,20 @@ AMyActor::AMyActor()
 	{
 		MeshComp->SetStaticMesh(Finder.Object);
 	}
-	
 	MeshComp->SetupAttachment(RootComponent);
+	
 }
 
 // Called when the game starts or when spawned
 void AMyActor::BeginPlay()
 {
 	Super::BeginPlay();
+	OnActorBeginOverlap.AddDynamic(this, &AMyActor::BeginOverlap);
 }
-
+void AMyActor::BeginOverlap(AActor* Actor, AActor* otherActor)
+{
+	UE_LOG()
+}
 // Called every frame
 void AMyActor::Tick(float DeltaTime)
 {

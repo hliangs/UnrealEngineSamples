@@ -17,3 +17,11 @@
 ![CreateActor](https://github.com/hliangs/UnrealEngineSamples/blob/master/Pic/CreateActor.png)
 
 要注意的是，Actor的派生类类名以A开头。
+
+## SpawnActor(创建/复制)
+
+[头文件](https://github.com/hliangs/UnrealEngineSamples/blob/master/ActorOperate/Source/ActorOperate/Actors/EventActor.h)
+
+[源文件](https://github.com/hliangs/UnrealEngineSamples/blob/master/ActorOperate/Source/ActorOperate/Actors/EventActor.cpp)
+
+[[参见(资源创建加载.md)]](资源创建加载.md)
