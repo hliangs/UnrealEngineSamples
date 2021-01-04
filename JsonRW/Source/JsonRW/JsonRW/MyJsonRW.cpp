@@ -58,12 +58,12 @@ void AMyJsonRW::WriteJson()
 //这里只写了读取字符串类型
 void AMyJsonRW::ReadJson(FString& path, FString& Field, FString& value)
 {
-	FString JsonData_r;
-	if (!FFileHelper::LoadFileToString(JsonData_r, *path)) //读取到JsonData_r
+	FString JsonData_Read_Buff;
+	if (!FFileHelper::LoadFileToString(JsonData_Read_Buff, *path)) //读取到JsonData_r
 	{
 		return;
 	}
-	TSharedRef<TJsonReader<>> reader = TJsonReaderFactory<>::Create(JsonData_r);//创建一个JsonReader
+	TSharedRef<TJsonReader<>> reader = TJsonReaderFactory<>::Create(JsonData_Read_Buff);//创建一个JsonReader
 	
 	TSharedPtr<FJsonValue> JsonValueArray;
 	TSharedPtr<FJsonObject> JsonObject;
@@ -99,8 +99,6 @@ void AMyJsonRW::IKeyEvent()
 
 void AMyJsonRW::UKeyEvent()
 {
-	
-	
 	WriteJson();
 	UE_LOG(LogTemp, Error, TEXT("write Json Finished"));
 	if (GEngine)GEngine->AddOnScreenDebugMessage(-1, 10, FColor::Red, "write Json Finished");
