@@ -15,9 +15,18 @@ public:
 	// Sets default values for this actor's properties
 	AEventActor();
 
+	UPROPERTY(EditAnywhere, Category = "RotActor")
+	AActor* RotActor;
+
+	UPROPERTY(VisibleAnywhere)
+	FTimerHandle Handle;
+	
+
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
 
 public:	
 	// Called every frame
@@ -25,6 +34,12 @@ public:
 
 	UFUNCTION()
 	void IKeyEvent();
+
+	UFUNCTION()
+	void VKeyEvent();
+
+	UFUNCTION()
+	void TimerEvent();
+	
+	virtual  void Destroyed() override;
 };
-
-

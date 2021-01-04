@@ -4,36 +4,36 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Engine/TextureRenderTarget2D.h"
-#include "MyActor.generated.h"
+#include "Serialization/JsonTypes.h"
+#include "MyJsonRW.generated.h"
 
 UCLASS()
-class ACTOROPERATE_API AMyActor : public AActor
+class JSONRW_API AMyJsonRW : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AMyActor();
+	AMyJsonRW();
+
+	UFUNCTION(BlueprintCallable)
+	void WriteJson();
+
+	UFUNCTION(BlueprintCallable)
+	void ReadJson(FString&path,FString& Field,FString& value);
+	
+	UFUNCTION()
+	void UKeyEvent();
+	
+	UFUNCTION()
+	void IKeyEvent();
+	
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	UFUNCTION()
-	void BeginOverlap(AActor* Actor, AActor* otherActor);
 
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	UPROPERTY(VisibleAnywhere, Category = "Mesh")
-	UStaticMesh* mesh;
-
-	UPROPERTY(VisibleAnywhere)
-	class UTextureRenderTarget2D* RenderTarget2D;
-
-	UPROPERTY(VisibleAnywhere)
-	USceneCaptureComponent2D* SceneCapture;
-
-	
 
 };
