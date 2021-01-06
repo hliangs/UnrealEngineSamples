@@ -34,16 +34,7 @@ AMyActor::AMyActor()
 void AMyActor::BeginPlay()
 {
 	Super::BeginPlay();
-	//OnActorBeginOverlap.AddDynamic(this, &AMyActor::BeginOverlap);
 }
-
-
-void AMyActor::BeginOverlap(AActor* Actor, AActor* otherActor)
-{
-	UE_LOG(MyLog, Warning, TEXT("Actor is %s,otherActor is %s"), *Actor->GetName(), *otherActor->GetName());
-}
-
-
 
 // Called every frame
 void AMyActor::Tick(float DeltaTime)

@@ -13,12 +13,12 @@ AMyJsonRW::AMyJsonRW()
 }
 void AMyJsonRW::WriteJson()
 {
+	//FPaths::ProjectContentDir()
 	FString Path("D:\\JsonRW.json");//文件路径
 	FString JsonData_Write_Buff;
 	
 	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);//创建一个FJsonObject对象
 	TSharedPtr<FJsonObject> jsonObject_Child = MakeShareable(new FJsonObject);//创建一个FJsonObject对象
-
 	JsonObject->SetStringField("Field", FString("Value"));//设置字段值
 	jsonObject_Child->SetStringField("Field", FString("Value"));//Child设置字段值
 	jsonObject_Child->SetBoolField("BOOL", false);//Child设置字段值
@@ -37,6 +37,8 @@ void AMyJsonRW::WriteJson()
 	if (JsonObject.IsValid() && JsonObject->Values.Num() > 0)
 	{
 		TSharedRef<TJsonWriter<TCHAR>> writer = TJsonWriterFactory<>::Create(&JsonData_Write_Buff);//创建一个JsonWriter
+		//writer->WriteObjectStart();//{
+		//writer->WriteObjectEnd();//}
 		FJsonSerializer::Serialize(JsonObject.ToSharedRef(), writer);//序列化到JsonData_w
 	}
 	FFileHelper::SaveStringToFile(JsonData_Write_Buff, *Path);//写文件
