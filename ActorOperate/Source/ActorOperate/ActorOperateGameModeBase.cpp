@@ -2,4 +2,9 @@
 
 
 #include "ActorOperateGameModeBase.h"
+#include "PlayerController/MyPlayerController.h"
 
+AActorOperateGameModeBase::AActorOperateGameModeBase()
+{
+	PlayerControllerClass = AMyPlayerController::StaticClass();
+}

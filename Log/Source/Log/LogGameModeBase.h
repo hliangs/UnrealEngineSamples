@@ -4,16 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "ActorOperateGameModeBase.generated.h"
+#include "LogGameModeBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ACTOROPERATE_API AActorOperateGameModeBase : public AGameModeBase
+class LOG_API ALogGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-public:
-	AActorOperateGameModeBase();
 	
 };

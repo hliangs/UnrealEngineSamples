@@ -9,6 +9,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Components/SceneCaptureComponent2D.h"
+#include "../GameInstance/MyGameInstance.h"
+#include "../Interfaces/MyInterface.h"
 // Sets default values
 AMyActor::AMyActor()
 {
@@ -29,11 +31,35 @@ AMyActor::AMyActor()
 	SceneCapture->SetupAttachment(RootComponent);
 }
 
+void AMyActor::UKeyEvent()
+{
+	UE_LOG(LogTemp, Error, TEXT(__FUNCTION__));
+}
+
+void AMyActor::CKeyEvent()
+{
+	UE_LOG(LogTemp, Error, TEXT(__FUNCTION__));
+}
+
 
 // Called when the game starts or when spawned
 void AMyActor::BeginPlay()
 {
 	Super::BeginPlay();
+	APlayerController* Controller = UGameplayStatics::GetPlayerController(GetWorld(),0);
+	Controller->bBlockInput = false;
+	UInputComponent* Input = NewObject<UInputComponent>(this);
+	Input->bBlockInput = false;
+	Input->BindKey(EKeys::U, IE_Pressed, this, &AMyActor::UKeyEvent);
+	Input->BindKey(EKeys::C, IE_Pressed, this, &AMyActor::CKeyEvent);
+	Controller->PushInputComponent(Input);
+	UMyGameInstance*Instance =Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(GetWorld())) ;
+	if (Instance&&Instance->GetClass()->ImplementsInterface(UMyInterface::StaticClass()))
+	{
+		IMyInterface* Interface = Cast<IMyInterface>(Instance);
+		UE_LOG(LogTemp, Error, TEXT(__FUNCTION__));
+		Interface->Execute_KeyPress(Instance,EKeys::U);
+	}
 }
 
 // Called every frame

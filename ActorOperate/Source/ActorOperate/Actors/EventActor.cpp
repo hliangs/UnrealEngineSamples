@@ -30,11 +30,15 @@ void AEventActor::BeginPlay()
 	Super::BeginPlay();
 	//添加一个按键事件
 	APlayerController* Controller = UGameplayStatics::GetPlayerController(GetWorld(), 0);
-	UInputComponent* Input = NewObject<UInputComponent>();
+	
+	Input = NewObject<UInputComponent>();
+	Input->bBlockInput = false;
 	Input->BindKey(EKeys::I, IE_Pressed, this, &AEventActor::IKeyEvent);
 	Input->BindKey(EKeys::V, IE_Pressed, this, &AEventActor::VKeyEvent);
+	Input->BindKey(EKeys::U, IE_Pressed, this, &AEventActor::UKeyEvent);
 	Controller->PushInputComponent(Input);
-
+	
+	
 	
 }
 
@@ -50,6 +54,11 @@ void AEventActor::VKeyEvent()
 	if(!Handle.IsValid())
 		GetWorld()->GetTimerManager().SetTimer(Handle, this, &AEventActor::TimerEvent, 1.0f, true);
 	UE_LOG(MyLog, Warning, TEXT(__FUNCTION__));
+}
+
+void AEventActor::UKeyEvent()
+{
+	UE_LOG(LogTemp, Warning, TEXT(__FUNCTION__));
 }
 
 void AEventActor::Destroyed()

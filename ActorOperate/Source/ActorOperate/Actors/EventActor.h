@@ -20,6 +20,8 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	FTimerHandle Handle;
+	UPROPERTY(VisibleAnywhere)
+	UInputComponent* Input;
 	
 
 
@@ -37,6 +39,10 @@ public:
 
 	UFUNCTION()
 	void VKeyEvent();
+	
+	UFUNCTION()
+	void UKeyEvent();
+
 
 	UFUNCTION()
 	void TimerEvent();
