@@ -13,6 +13,7 @@ void ATLevelScriptActor::BeginPlay()
 	{
 		UE_LOG(LogTemp, Error, TEXT(__FUNCTION__));
 		ITInterface* Interface = Cast<ITInterface>(Instance);
+		NewObject<UObject>(this);
 		Interface->Execute_Interface_function(Instance, Instance);
 	}
 	

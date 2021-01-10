@@ -5,13 +5,9 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "ActorOperate",
+			"Name": "BPToCpp",
 			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"AdditionalDependencies": [
-				"Engine",
-				"UMG"
-			]
+			"LoadingPhase": "Default"
 		}
 	]
 }

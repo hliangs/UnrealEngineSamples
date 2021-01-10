@@ -3,10 +3,11 @@
 
 #include "MyGameInstance.h"
 #include "Kismet/GameplayStatics.h"
+#include "Blueprint/UserWidget.h"
+#include "../Useridgets/TUserWidget.h"
 void UMyGameInstance::OnStart()
 {
 	Super::OnStart();
-	UE_LOG(LogTemp, Error, TEXT(__FUNCTION__));
 }
 
 int UMyGameInstance::KeyPress_Implementation(FKey key)
@@ -24,6 +25,7 @@ bool UMyGameInstance::KeyEvent_Implementation(FKey key)
 bool UMyGameInstance::RequestOpenlevel_Implementation(UObject* world, FName& name)
 {
 	UGameplayStatics::OpenLevel(world, name);
+
 	return false;
 }
 
